@@ -2,25 +2,25 @@
 //
 
 #include <iostream>
-#include <any>
 #include <vector>
-#include <string>
+#include <any>
 
 struct MyClass {};
 
-int main(){
-    std::cout << std::boolalpha;
+int main() {
+	std::cout << std::boolalpha;
 
-    std::vector<std::any> anyVec(true, 2017, std::string("test"), 3.14, MyClass());
-    std::cout << "std::any_cast<bool>anyVec[0]:" << std::any_cast<bool>(anyVec[0]);
+	std::vector<std::any> anyVec{ true, 2017, std::string("string"), 3.14, MyClass() };
+	std::cout << "std::any_cast<bool>anyVec[0]: " << std::any_cast<bool>(anyVec[0]);
+	//true
+	int myInt = std::any_cast<int>(anyVec[1]);
+	std::cout << "myInt:" << myInt << std::endl;
 
-    int myInt = std::any_cast<int>(anyVec[1]);
-    std::cout << "myInt: " << myInt << std::endl;
+	std::cout << std::endl;
+	std::cout << "anyVec[0].type().name(): " << anyVec[0].type().name();
+	std::cout << "anyVec[1].type().name(): " << anyVec[1].type().name();
+	return 0;
 
-    std::cout << std::endl;
-    std::cout << "anyVec[0].type().name(): " << anyVec[0].type().name();
-    std::cout << "anyVec[0].type().name() : " << anyVec[1].type().name();
-    return 0;
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
