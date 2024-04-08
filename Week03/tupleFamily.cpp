@@ -3,21 +3,19 @@
 
 #include <iostream>
 #include <tuple>
+using namespace std;
 
-int main()
-{
+int main() {
     std::cout << std::boolalpha << std::endl;
 
-    std::tuple<std::string, int, float> tup1("first","mother", 3.14f);
-    auto tup2 = std::make_tuple("sister","brother",28);
+    std::tuple<std::string, std::string, std::string, std::string> tup1;
+    tup1= std::make_tuple("father", "mother", "sister", "brother");
 
-    std::cout << "tup1:" << std::get<0>(tup1) << "," << std::get<1>(tup1) << ","
+    std::cout << "tup1: " << std::get<0>(tup1) << ", " << std::get<1>(tup1) << ","
         << std::get<2>(tup1) << std::endl;
-    std::cout << "tup2: " << std::get<0>(tup2) << "," << std::get<1>(tup2) << ","
-        << std::get<2>(tup2) << std::endl;
-    std::cout << "tup1 < tup2 :" << (tup1 < tup2) << std::endl;
+
+    std::cout << std::endl;
     return 0;
-}
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
 // 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
