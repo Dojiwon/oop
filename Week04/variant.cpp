@@ -18,8 +18,8 @@ int main()
         std::get<float>(w);
     }
     catch (std::bad_variant_access&) {}
-    std::bad_variant_access<std::string> v("abc");
-    v = "def";
+    std::bad_variant_access<std::string> v1("abc");
+    v1 = "def";
     return 0;
 }
 
