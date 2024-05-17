@@ -7,8 +7,7 @@
 #include <array>
 #include <string>
 
-int main()
-{
+int main(){
     std::unordered_map < std::string, int> myMap{
         {"Rainer",1966}, {"Beatrix",1966}, {"Juliette",1997}, {"Marius",1999} };
     for (auto m : myMap) std::cout << "{" << m.first << "," << m.second << "}";
