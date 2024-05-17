@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <unordered_map>
+#include <string>
+#include <vector>
 
 int main() {
 	std::unordered_map<std::string, int> unordMap{
