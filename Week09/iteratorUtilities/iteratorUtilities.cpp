@@ -4,6 +4,8 @@
 #include <iostream>
 #include <iterator>
 #include <unordered_map>
+#include <array>
+#include <string>
 
 int main()
 {
