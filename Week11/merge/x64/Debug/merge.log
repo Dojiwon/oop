@@ -1,0 +1,27 @@
+﻿  merge.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xutility(1382,19): error C2064: 항은 2개의 인수를 받아들이는 함수로 계산되지 않습니다.
+  (소스 파일 'merge.cpp'을(를) 컴파일하는 중)
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xutility(1382,19):
+  템플릿 인스턴스화 컨텍스트(가장 오래된 인스턴스화 컨텍스트)가
+  	D:\y2024\Week11\merge\merge.cpp(30,10):
+  	컴파일되는 함수 템플릿 인스턴스화 '_OutIt std::set_union<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,std::back_insert_iterator<std::vector<_Ty,std::allocator<_Ty>>>>(_InIt1,_InIt1,_InIt2,_InIt2,_OutIt,_Pr)'에 대한 참조를 확인하세요.
+          with
+          [
+              _OutIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<int>>>,
+              _Ty=int,
+              _InIt1=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<int>>>,
+              _InIt2=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<int>>>,
+              _Pr=std::back_insert_iterator<std::vector<int,std::allocator<int>>>
+          ]
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\algorithm(9186,13):
+  	컴파일되는 함수 템플릿 인스턴스화 'bool std::_Debug_lt_pred<_Pr&,int&,int&,0>(std::back_insert_iterator<std::vector<int,std::allocator<int>>>&,_Ty1,_Ty2) noexcept(<expr>)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Pr=std::back_insert_iterator<std::vector<int,std::allocator<int>>>,
+              _Ty1=int &,
+              _Ty2=int &
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\algorithm(9189,20): error C2064: 항은 2개의 인수를 받아들이는 함수로 계산되지 않습니다.
+  (소스 파일 'merge.cpp'을(를) 컴파일하는 중)
+  
