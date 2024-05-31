@@ -1,50 +1,48 @@
 ﻿// algorithmen.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
-#include <iostream>
+#include <algorithm>
 #include <deque>
+#include <iostream>
 #include <list>
 #include <string>
 #include <vector>
-#include <algorithm>
 
 template <typename Cont, typename T>
 void doTheSame(Cont cont, T t) {
-    for (auto c : cont)std::cout << c << " ";
-    std::cout << std::endl;
-    std::cout << "cont.size(): " << cont.size() << std::endl;
 
-    std::reverse(cont.begin(), cont.end());
-    for (auto c : cont)std::cout << c << " ";
-    std::cout << std::endl;
-
-    std::reverse(cont.begin(), cont.end());
-    for (auto c : cent) std::cout << c << " ";
-    std::cout << std::endl;
-
-    auto It = std::find(cont.begin(), cont.end(), t);
-    std::reverse(It, cont.end());
-    for (auto c : cont) std::cout << c << " ";
+	for (auto c : cont) std::cout << c << " ";
+	std::cout << std::endl;
+	std::cout << "cont.size(): " << cont.size() << std::endl;
+	std::reverse(cont.begin(), cont.end());
+	for (auto c : cont) std::cout << c << " ";
+	std::cout << std::endl;
+	std::reverse(cont.begin(), cont.end());
+	for (auto c : cont) std::cout << c << " ";
+	std::cout << std::endl;
+	auto It = std::find(cont.begin(), cont.end(), t);
+	std::reverse(It, cont.end());
+	for (auto c : cont) std::cout << c << " ";
 
 }
-int main()
-{
-    std::vector<int> myVec{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-    std::deque<std::string> myDeque({ "A", "B", "C", "D", "E", "F", "G", "H", "I" });
-    std::list<char> myList({ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' });
+int main() {
 
-    doTheSame(myVec, 5);
-    std::cout << "\n\n";
+	std::cout << std::endl;
 
-    doTheSame(myDeque, "D");
-    std::cout << "\n\n";
+	std::vector<int> myVec{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	std::deque<std::string> myDeque({ "A", "B", "C", "D", "E", "F", "G", "H", "I" });
+	std::list<char> myList({ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' });
 
-    doTheSame(myList, 'd');
-    std::cout << "\n\n";
+	doTheSame(myVec, 5);
+	std::cout << "\n\n";
+	doTheSame(myDeque, "D");
+	std::cout << "\n\n";
+	doTheSame(myList, 'd');
 
-    return 0;
+	std::cout << "\n\n";
+
+	return 0;
 }
-
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
 // 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
 
