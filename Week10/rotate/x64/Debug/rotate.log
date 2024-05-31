@@ -1,0 +1,3 @@
+﻿  rotate.cpp
+D:\20212096 도지원\Week10\rotate\rotate.cpp(13,39): error C2065: 'middlelt': 선언되지 않은 식별자입니다.
+D:\20212096 도지원\Week10\rotate\rotate.cpp(13,51): error C2065: 'endlt': 선언되지 않은 식별자입니다.

@@ -1,0 +1,52 @@
+﻿// partition.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
+//
+#include <algorithm>
+#include <cctype>
+#include <deque>
+#include <iostream>
+#include <list>
+#include <string>
+#include <vector>
+
+bool isOdd(int i) { return (i % 2); }
+
+int main() {
+	std::vector<int> vec{ 1, 4, 3, 4, 5, 6, 7, 3, 4, 5, 6, 0, 4, 8, 4, 6, 6, 5, 8, 8, 3, 9, 3, 7, 6, 4, 8 };
+
+	for (auto v : vec) std::cout << v << " ";
+
+	auto parPoint = std::partition(vec.begin(), vec.end(), isOdd);
+
+	for (auto v : vec) std::cout << v << " ";
+	for (auto v = vec.begin(); v != parPoint; ++v) std::cout << *v << " ";
+	std::cout << std::endl;
+	for (auto v = parPoint; v != vec.end(); ++v) std::cout << *v << " ";
+	std::cout << std::endl;
+
+	std::cout << "std::is_partitioned(vec.begin(), vec.end(), isOdd): " << std::is_partitioned(vec.begin(), vec.end(), isOdd) << std::endl;
+
+	std::cout << "std::partition_point(vec.begin(), vec.end(), isOdd) == parPoint: " << (std::partition_point(vec.begin(), vec.end(), isOdd) == parPoint) << std::endl;
+
+	std::cout << std::endl;
+
+	std::list<int> li;
+	std::list<int> de;
+	std::partition_copy(vec.begin(), vec.end(), std::back_inserter(li), std::back_inserter(de), [](int i) { return i < 5; });
+
+	for (auto v : li) std::cout << v << " ";
+	for (auto v : de) std::cout << v << " ";
+
+	return 0;
+
+}
+
+// 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
+// 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
+
+// 시작을 위한 팁: 
+//   1. [솔루션 탐색기] 창을 사용하여 파일을 추가/관리합니다.
+//   2. [팀 탐색기] 창을 사용하여 소스 제어에 연결합니다.
+//   3. [출력] 창을 사용하여 빌드 출력 및 기타 메시지를 확인합니다.
+//   4. [오류 목록] 창을 사용하여 오류를 봅니다.
+//   5. [프로젝트] > [새 항목 추가]로 이동하여 새 코드 파일을 만들거나, [프로젝트] > [기존 항목 추가]로 이동하여 기존 코드 파일을 프로젝트에 추가합니다.
+//   6. 나중에 이 프로젝트를 다시 열려면 [파일] > [열기] > [프로젝트]로 이동하고 .sln 파일을 선택합니다.
