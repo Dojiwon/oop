@@ -1,13 +1,56 @@
 ﻿// random.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
+#include <cstdlib>
+#include <fstream>
 #include <iostream>
+#include <map>
 #include <random>
 
-int main(){
-    std::cout << "Hello World!\n";
+static const int NUM = 1000000;
+
+void writeToFile(const char* fileName, const std::map<int, int>& data) {
+
+    std::ofstream file(fileName);
+
+    if (!file) {
+        std::cerr << "Could not open the file " << fileName << ".";
+        exit(EXIT_FAILURE);
+    }
+
+    for (auto mapIt : data) file << mapIt.first << " " << mapIt.second << std::endl;
 }
 
+int main() {
+
+    std::random_device seed;
+
+    std::mt19937 engine(seed());
+
+    std::uniform_int_distribution<> uniformDist(0, 20);
+    std::normal_distribution<> normDist(50, 8);
+    std::poisson_distribution<> poiDist(6);
+    std::gamma_distribution<> gammaDist;
+
+    std::map<int, int> uniformFrequency;
+    std::map<int, int> normFrequency;
+    std::map<int, int> poiFrequency;
+    std::map<int, int> gammaFrequency;
+
+    for (int i = 1; i <= NUM; ++i) {
+        ++uniformFrequency[uniformDist(engine)];
+        ++normFrequency[round(normDist(engine))];
+        ++poiFrequency[poiDist(engine)];
+        ++gammaFrequency[round(gammaDist(engine))];
+    }
+
+    writeToFile("uniform_int_distribution.txt", uniformFrequency);
+    writeToFile("normal_distribution.txt", normFrequency);
+    writeToFile("poisson_distribution.txt", poiFrequency);
+    writeToFile("gamma_distribution.txt", gammaFrequency);
+
+    return 0;
+}
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
 // 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
 
