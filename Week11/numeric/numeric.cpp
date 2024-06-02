@@ -1,11 +1,9 @@
 ﻿// numeric.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
-
 #include <iostream>
 #include <numeric>
 #include <vector>
 #include <array>
-
 
 int main()
 {
@@ -16,7 +14,7 @@ int main()
     std::cout << "std::accumlate(arr.begin(),arr.end(),1, [](int a, int b){return a + b}):"
         << std::accumulate(arr.begin(), arr.end(), 1, [](int a, int b) {return a * b; })
         << std::endl;
-    
+
     std::vector<int> vec{ 1,2,3,4,5,6,7,8,9 };
     std::vector<int> myVec;
     std::cout << "adjacent_difference: " << std::endl;
