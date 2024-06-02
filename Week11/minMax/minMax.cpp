@@ -1,47 +1,46 @@
 ﻿// minMax.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
-
-#include <iostream>
 #include <algorithm>
+#include <cstdlib>
+#include <iostream>
+#include <string>
 #include <vector>
+#include <sstream>
 
-int main()
-{
-    std::string toString(int i) {
-        std::stringstream buff;
-        buff.str("");
-        buff << i;
-        std::string val = buff.str();
-        return val;
-    }
-    int toInt(const std::string& s) {
-        std::stringstream buff;
-        buff.str("");
-        buff << s;
-        int value;
-        buff >> value;
-        return value;
-    }
-    std::vector<int> myInts;
-    std::vector<std::string> myStrings{ "94","5","39","-4","-49","1001","-77",
-                                         "23","0","84","59","96","6","-94","87" };
-    std::transform(myStrings.begin(), myStrings.end(), std::back_inserter(myInts), toInt);
-    for (auto i : myInts)std::cout << i << "";
+std::string toString(int i) {
+	std::stringstream buff;
+	buff.str("");
+	buff << i;
+	std::string val = buff.str();
+	return val;
+}
 
-    auto paInt = std::minmax_element(myInts.begin(), myInts.end());
-    std::cout << "std::minmax_element(myInts.begin(), myInts.end():"
-        << "(" << *paInt.first << "," << *paInt.second << ")" << std::endl;
+int toInt(const std::string& s) {
+	std::stringstream buff;
+	buff.str("");
+	buff << s;
+	int value;
+	buff >> value;
+	return value;
+}
 
-    auto paStr = std::minmax_element(myStrings.begin(), myStrings.end());
-    std::cout << "std::minmax_element(myStrings.begin(), myStrings.end():"
-    << "(" << *paInt.first << "," << *paInt.second << ")" << std::endl;
 
-    auto paStrAsInt = std::minmax_element(myStrings.begin(), myStrings.end(),
-        [](std::string a, std::string b) { return toInt(a) < toInt(b); });
-    std::cout << "std::minmax_element(myStrings.begin(), myStrings.end():"
-        << "(" << *paStr.first << "," << *paStr.second << ")" << std::endl;
+int main() {
+	std::vector<int> myInts;
+	std::vector<std::string> myStrings{ "94", "5", "39", "-4", "-49", "1001", "-77", "23", "0", "84", "59", "96", "6", "-94", "87" };
+	std::transform(myStrings.begin(), myStrings.end(), std::back_inserter(myInts), toInt);
+	for (auto i : myInts) std::cout << i << " ";
 
-    return 0;
+	auto paInt = std::minmax_element(myInts.begin(), myInts.end());
+	std::cout << "std::minmax_element(myInts.begin(), myInts.end(): " << "(" << *paInt.first << ", " << *paInt.second << ")" << std::endl;
+
+	auto paStr = std::minmax_element(myStrings.begin(), myStrings.end());
+	std::cout << "std::minmax_element(myStrings.begin(), myStrings.end(): " << "(" << *paStr.first << ", " << *paStr.second << ")" << std::endl;
+
+	auto paStrAsInt = std::minmax_element(myStrings.begin(), myStrings.end(), [](std::string a, std::string b) { return toInt(a) < toInt(b); });
+	std::cout << "std::minmax_element(myStrings.begin(), myStrings.end(): " << "(" << *paStr.first << ", " << *paStr.second << ")" << std::endl;
+
+	return 0;
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
