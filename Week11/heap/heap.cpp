@@ -13,19 +13,15 @@ int main()
     std::make_heap(vec.begin(), vec.end());
     for (auto v : vec)std::cout << v << " ";
 
-    std::cout << "std::is_heap(vec.begin(), vec.end()):"
-        << std::is_heap(vec.begin(), vec.end()) << std::endl;
+    std::cout << "std::is_heap(vec.begin(), vec.end()):" << std::is_heap(vec.begin(), vec.end()) << std::endl;
 
     vec.push_back(100);
-    std::cout << "std::is_heap(vec.begin(), vec.end()):"
-        << std::is_heap(vec.begin(), vec.end()) << std::endl;
-    std::cout << " * std::is_heap_until(vec.begin(), vec.end()) :"
-        << *std::is_heap_until(vec.begin(),vec.end()) << std::endl;
+    std::cout << "std::is_heap(vec.begin(), vec.end()):"<< std::is_heap(vec.begin(), vec.end()) << std::endl;
+    std::cout << " * std::is_heap_until(vec.begin(), vec.end()) :"<< *std::is_heap_until(vec.begin(), vec.end()) << std::endl;
     for (auto v : vec)std::cout << v << " ";
 
     std::push_heap(vec.begin(), vec.end());
-    std::cout << "std::is_heap(vec.begin(),vec.end()):"
-        << std::is_heap(vec.begin(), vec.end()) << std::endl;
+    std::cout << "std::is_heap(vec.begin(),vec.end()):"<< std::is_heap(vec.begin(), vec.end()) << std::endl;
     std::cout << std::endl;
     for (auto v : vec) std::cout << v << " ";
 
@@ -38,10 +34,9 @@ int main()
     std::cout << "vec.front():" << vec.front() << std::endl;
 
     return 0;
- 
+
 
 }
-
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
 // 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
 
