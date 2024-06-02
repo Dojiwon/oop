@@ -1,6 +1,5 @@
 ﻿// binarySearch.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
-
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -22,7 +21,7 @@ int main()
     std::cout << "std::binary_search(vec.begin(), vec.end(), 5,isLessAbs):"
         << std::binary_search(vec.begin(), vec.end(), -5, isLessAbs) << std::endl;
     std::cout << "std::binary_search(vec.begin(), vec.end(), 5, isLessAbs):"
-        << std::binary_search(vec.begin(),vec.end(), 5, isLessAbs) << std::endl;
+        << std::binary_search(vec.begin(), vec.end(), 5, isLessAbs) << std::endl;
     auto pair = std::equal_range(vec.begin(), vec.end(), 3, isLessAbs);
     std::cout << std::endl;
     std::cout << "Position of first 3:" << std::distance(vec.begin(), pair.first)
