@@ -1,6 +1,5 @@
 ﻿// newAlgorithms.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
-
 #include <iostream>
 #include <numeric>
 #include <string>
@@ -12,28 +11,30 @@ int main()
     std::vector<int> intVec{ 1,2,3,4,5,6,7,8,9,10 };
     std::for_each_n(std::execution::par,
         intVec.begin(), 5, [](int& arg) {arg *= arg; });
+
     std::cout << "for_each_n: ";
     for (auto v : intVec)std::cout << v << " ";
 
     std::vector<int> resVec{ 1,2,3,4,5,6,7,8,9 };
     std::vector<int> resVec0(resVec.size());
-    std::exclusive_scan(std::current_exception::par,
-        resVec.begin(), resVec.end(), resVec0.begin(), 1
-        [](int fir, int sec) {return fir * sec});
+    std::exclusive_scan(std::execution::par,
+        resVec.begin(), resVec.end(), resVec0.begin(), 1,
+        [](int fir, int sec) {return fir * sec; });
+
     std::cout << "exclusive_scan:";
     for (auto v : resVec0)std::cout << v << " ";
 
     std::vector<int> resVec2{ 1,2,3,4,5,6,7,8,9 };
-    std::inclusive_scan(std::exception::par,
+    std::inclusive_scan(std::execution::par,
         resVec2.begin(), resVec2.end(), resVec2.begin(),
-        [](int fir, int sec) {return fir * sec; }, 1);
+        [](int fir, int sec) { return fir * sec; }, 1);
 
     std::cout << "inclusive_scan:";
     for (auto v : resVec2)std::cout << v << " ";
 
     std::vector<int> resVec3{ 1,2,3,4,5,6,7,8,9 };
     std::vector<int> resVec4(resVec3.size());
-    std::transform_execlusive_scan(std::current_exception::par,
+    std::transform_exclusive_scan(std::execution::par,
         resVec3.begin(), resVec3.end(),
         resVec4.begin(), 0,
         [](int fir, int sec) {return fir + sec; },
@@ -42,28 +43,28 @@ int main()
     std::cout << "transform_exclusive_scan: ";
     for (auto v : resVec4) std::cout << v << " ";
 
-    std::vector<std::string> resVec{ "Only","for","testing","purpose"};
+    std::vector<std::string> resVec{ "Only","for","testing","purpose" };
     std::vector<int> resVec5(resVec3.size());
-    std::transform_execlusive_scan(std::current_exception::par,
-        resVec.begin(), resVec3.end(),
-        resVec5.begin(), 0,
-        [](auto fir, auto sec) {return fir + sec; },
-        [](auto s) {return s.length(); },0);
+    std::transform_inclusive_scan(std::execution::par,
+        strVec.begin(), strVec.end(),
+        resVec5.begin(),
+        [](auto fir, auto sec) { return fir + sec; },
+        [](auto s) { return s.length(); }, 0);
 
     std::cout << "transform_exclusive_scan: ";
     for (auto v : resVec5) std::cout << v << " ";
 
 
     std::vector<std::string> resVec2{ "Only","for","testing","purpose" };
-    std::string res = std::_Deduce_as_pair(std::execution::pair,
+    std::string res = std::reduce(std::execution::par,
         strVec2.begin() + 1, strVec2.end(), strVec2[0],
-        [](auto fit, auto sec) {return fir + ":" + sec; });
+        [](auto fir, auto sec) { return fir + ":" + sec; });
     std::cout << "reduce:" << res << std::endl;
 
-    std::size_t res7 = std::parallel::transform_reduce(std::exception::par,
+    std::size_t res7 = std::parallel::transform_reduce(std::execution::par,
         strVec2.begin(), strVec2.end(), 0,
-        [](std::size_t a, std::size_t b) {return a + b; },
-        [](std::string s) {return s.length(); });
+        [](std::size_t a, std::size_t b) { return a + b; },
+        [](std::string s) { return s.length(); });
 
     std::cout << "transform_reduce:" << res7 << std::endl;
     return 0;
