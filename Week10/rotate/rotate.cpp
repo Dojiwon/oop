@@ -1,6 +1,5 @@
 ﻿// rotate.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
-
 #include <iostream>
 #include <algorithm>
 #include <string>
@@ -10,9 +9,10 @@ int main()
     std::string str{ "123456789" };
 
     auto endIt = str.end();
-    for (auto middleIt = str.begin(); middlelt != endlt; ++middleIt) {
+    for (auto middleIt = str.begin(); middleIt != endIt; ++middleIt) {
         std::rotate(str.begin(), middleIt, str.end());
         std::cout << str << std::endl;
+        return 0;
     }
 }
 
