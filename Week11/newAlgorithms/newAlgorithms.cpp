@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <execution>
+#include <ppl.h>
 
 int main()
 {
@@ -43,8 +44,8 @@ int main()
     std::cout << "transform_exclusive_scan: ";
     for (auto v : resVec4) std::cout << v << " ";
 
-    std::vector<std::string> resVec{ "Only","for","testing","purpose" };
-    std::vector<int> resVec5(resVec3.size());
+    std::vector<std::string> strVec{ "Only","for","testing","purpose" };
+    std::vector<int> resVec5(strVec.size());
     std::transform_inclusive_scan(std::execution::par,
         strVec.begin(), strVec.end(),
         resVec5.begin(),
@@ -55,7 +56,7 @@ int main()
     for (auto v : resVec5) std::cout << v << " ";
 
 
-    std::vector<std::string> resVec2{ "Only","for","testing","purpose" };
+    std::vector<std::string> strVec2{ "Only","for","testing","purpose" };
     std::string res = std::reduce(std::execution::par,
         strVec2.begin() + 1, strVec2.end(), strVec2[0],
         [](auto fir, auto sec) { return fir + ":" + sec; });
